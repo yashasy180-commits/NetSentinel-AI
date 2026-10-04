@@ -1,0 +1,52 @@
+{
+    "model_type": "RandomForestClassifier",
+    "random_state": 42,
+    "n_estimators": 200,
+    "max_depth": 20,
+    "training_samples": 2400,
+    "testing_samples": 600,
+    "total_samples": 3000,
+    "feature_count": 17,
+    "output_features": [
+        "numeric__duration",
+        "numeric__total_packets",
+        "numeric__total_bytes",
+        "numeric__packets_per_second",
+        "numeric__bytes_per_second",
+        "numeric__source_port",
+        "numeric__destination_port",
+        "numeric__forward_packets",
+        "numeric__reverse_packets",
+        "numeric__forward_bytes",
+        "numeric__reverse_bytes",
+        "numeric__tcp_syn_count",
+        "numeric__tcp_ack_count",
+        "numeric__tcp_fin_count",
+        "numeric__tcp_rst_count",
+        "categorical__protocol_TCP",
+        "categorical__protocol_UDP"
+    ],
+    "classes": [
+        0,
+        1
+    ],
+    "threshold": 0.5,
+    "metrics": {
+        "accuracy": 0.9983333333333333,
+        "precision": 1.0,
+        "recall": 0.9966666666666667,
+        "f1_score": 0.998330550918197
+    },
+    "confusion_matrix": [
+        [
+            300,
+            0
+        ],
+        [
+            1,
+            299
+        ]
+    ],
+    "classification_report": "              precision    recall  f1-score   support\n\n      BENIGN       1.00      1.00      1.00       300\n   INTRUSION       1.00      1.00      1.00       300\n\n    accuracy                           1.00       600\n   macro avg       1.00      1.00      1.00       600\nweighted avg       1.00      1.00      1.00       600\n",
+    "mean_intrusion_probability": 0.4978
+}

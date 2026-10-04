@@ -1,0 +1,766 @@
+/* =========================================================
+   NETSENTINEL AI — LOGIN
+   Isolated authentication screen
+   ========================================================= */
+
+.ns-login-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 18% 15%,
+      rgba(37, 99, 235, 0.12),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 82% 85%,
+      rgba(14, 165, 233, 0.06),
+      transparent 30%
+    ),
+    #070a0f;
+
+  color: #edf3fa;
+}
+
+/* ---------------------------------------------------------
+   Background grid
+   --------------------------------------------------------- */
+
+.ns-login-grid {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 48px 48px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.9),
+    transparent 90%
+  );
+
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------
+   Main shell
+   --------------------------------------------------------- */
+
+.ns-login-shell {
+  position: relative;
+  z-index: 2;
+
+  width: min(1060px, calc(100% - 48px));
+  min-height: 640px;
+
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+
+  background: rgba(13, 17, 24, 0.94);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.02);
+
+  overflow: hidden;
+
+  backdrop-filter: blur(18px);
+}
+
+/* ---------------------------------------------------------
+   Left brand section
+   --------------------------------------------------------- */
+
+.ns-login-brand {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 42px;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+
+  background:
+    radial-gradient(
+      circle at 25% 20%,
+      rgba(59, 130, 246, 0.12),
+      transparent 40%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(19, 27, 38, 0.92),
+      rgba(10, 14, 20, 0.96)
+    );
+}
+
+/* subtle vertical line */
+.ns-login-brand::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+
+  width: 1px;
+
+  background: linear-gradient(
+    transparent,
+    rgba(59, 130, 246, 0.35),
+    transparent
+  );
+}
+
+/* ---------------------------------------------------------
+   Brand
+   --------------------------------------------------------- */
+
+.ns-brand-top {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.ns-brand-mark {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(96, 165, 250, 0.28);
+  border-radius: 11px;
+
+  color: #60a5fa;
+
+  background: rgba(59, 130, 246, 0.1);
+
+  box-shadow:
+    inset 0 0 20px rgba(59, 130, 246, 0.04),
+    0 0 24px rgba(59, 130, 246, 0.05);
+}
+
+.ns-brand-name {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.ns-brand-product {
+  margin-top: 3px;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+
+  color: #667487;
+}
+
+/* ---------------------------------------------------------
+   Brand content
+   --------------------------------------------------------- */
+
+.ns-brand-content {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.ns-live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 22px;
+  padding: 7px 10px;
+
+  border: 1px solid rgba(34, 197, 94, 0.16);
+  border-radius: 7px;
+
+  background: rgba(34, 197, 94, 0.05);
+
+  color: #86efac;
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.ns-live-indicator span {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  box-shadow: 0 0 9px rgba(34, 197, 94, 0.65);
+}
+
+.ns-brand-content h1 {
+  margin: 0;
+
+  max-width: 520px;
+
+  font-size: clamp(36px, 4vw, 50px);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  font-weight: 700;
+}
+
+.ns-brand-content h1 span {
+  color: #60a5fa;
+}
+
+.ns-brand-content p {
+  max-width: 475px;
+
+  margin: 22px 0 0;
+
+  color: #8f9bab;
+
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* ---------------------------------------------------------
+   AI panel
+   --------------------------------------------------------- */
+
+.ns-security-panel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.ns-security-icon {
+  width: 36px;
+  height: 36px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
+}
+
+.ns-security-panel div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.ns-security-panel strong {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ns-security-panel span {
+  margin-top: 3px;
+
+  color: #697789;
+
+  font-size: 10px;
+}
+
+.ns-security-status {
+  margin-left: auto;
+
+  color: #4ade80;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* ---------------------------------------------------------
+   Brand footer
+   --------------------------------------------------------- */
+
+.ns-brand-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 24px;
+
+  color: #536071;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+/* ---------------------------------------------------------
+   Right login card
+   --------------------------------------------------------- */
+
+.ns-login-card {
+  display: flex;
+  flex-direction: column;
+
+  padding: 52px 58px;
+
+  background: rgba(9, 13, 19, 0.8);
+}
+
+/* ---------------------------------------------------------
+   Login header
+   --------------------------------------------------------- */
+
+.ns-login-card-header {
+  margin-bottom: 34px;
+}
+
+.ns-auth-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-bottom: 18px;
+  padding: 6px 9px;
+
+  border: 1px solid rgba(96, 165, 250, 0.16);
+  border-radius: 6px;
+
+  color: #7f9fc8;
+  background: rgba(59, 130, 246, 0.05);
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.ns-login-card-header h2 {
+  margin: 0;
+
+  font-size: 30px;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+.ns-login-card-header p {
+  margin: 9px 0 0;
+
+  color: #6f7c8d;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* mobile brand hidden on desktop */
+.ns-mobile-brand {
+  display: none;
+}
+
+/* ---------------------------------------------------------
+   Form
+   --------------------------------------------------------- */
+
+.ns-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+
+.ns-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ns-field label {
+  color: #aeb9c7;
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.ns-input-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: 48px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+
+  background: #0b1017;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.ns-input-wrapper > svg {
+  flex-shrink: 0;
+  margin-left: 14px;
+
+  color: #536274;
+}
+
+.ns-input-wrapper:focus-within {
+  border-color: rgba(59, 130, 246, 0.65);
+
+  background: #0c121a;
+
+  box-shadow:
+    0 0 0 3px rgba(59, 130, 246, 0.08);
+}
+
+.ns-input-wrapper input {
+  width: 100%;
+  height: 100%;
+
+  padding: 0 13px;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: #edf3fa;
+
+  font: inherit;
+  font-size: 13px;
+}
+
+.ns-input-wrapper input::placeholder {
+  color: #4e5b6b;
+}
+
+.ns-input-wrapper input:disabled {
+  opacity: 0.6;
+}
+
+.ns-password-toggle {
+  width: 42px;
+  height: 100%;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  background: transparent;
+
+  color: #5e6d7e;
+
+  cursor: pointer;
+}
+
+.ns-password-toggle:hover {
+  color: #aab8c8;
+}
+
+/* ---------------------------------------------------------
+   Error
+   --------------------------------------------------------- */
+
+.ns-login-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+
+  padding: 11px 12px;
+
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 7px;
+
+  background: rgba(239, 68, 68, 0.06);
+
+  color: #fca5a5;
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.ns-error-dot {
+  width: 6px;
+  height: 6px;
+
+  flex-shrink: 0;
+
+  margin-top: 5px;
+
+  border-radius: 50%;
+
+  background: #ef4444;
+}
+
+/* ---------------------------------------------------------
+   Submit button
+   --------------------------------------------------------- */
+
+.ns-login-submit {
+  width: 100%;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  margin-top: 5px;
+
+  border: 1px solid rgba(96, 165, 250, 0.35);
+  border-radius: 8px;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.18);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.ns-login-submit:hover:not(:disabled) {
+  background: #3275ee;
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 10px 26px rgba(37, 99, 235, 0.25);
+}
+
+.ns-login-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.ns-login-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ---------------------------------------------------------
+   Loading spinner
+   --------------------------------------------------------- */
+
+.ns-button-spinner,
+.ns-loading-spinner {
+  width: 15px;
+  height: 15px;
+
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+
+  border-radius: 50%;
+
+  animation: ns-spin 0.7s linear infinite;
+}
+
+.ns-loading-spinner {
+  width: 22px;
+  height: 22px;
+}
+
+@keyframes ns-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------------------------------------------------------
+   Security footer
+   --------------------------------------------------------- */
+
+.ns-login-security {
+  margin-top: auto;
+  padding-top: 28px;
+}
+
+.ns-security-line {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #7c8999;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.ns-security-line svg {
+  color: #4ade80;
+}
+
+.ns-login-security p {
+  margin: 7px 0 0;
+
+  color: #4f5c6d;
+
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------
+   Bottom metadata
+   --------------------------------------------------------- */
+
+.ns-login-meta {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 28px;
+  padding-top: 17px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+  color: #465262;
+
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------
+   Loading page
+   --------------------------------------------------------- */
+
+.ns-login-loading {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  background: #070a0f;
+
+  color: #7e8b9b;
+
+  font-size: 12px;
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .ns-login-shell {
+    grid-template-columns: 1fr;
+
+    width: min(520px, calc(100% - 32px));
+    min-height: auto;
+  }
+
+  .ns-login-brand {
+    display: none;
+  }
+
+  .ns-login-card {
+    padding: 38px 32px;
+  }
+
+  .ns-mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 28px;
+
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .ns-mobile-brand .ns-brand-mark {
+    width: 38px;
+    height: 38px;
+  }
+
+  .ns-login-security {
+    margin-top: 38px;
+  }
+}
+
+@media (max-width: 520px) {
+  .ns-login-shell {
+    width: calc(100% - 20px);
+
+    border-radius: 14px;
+  }
+
+  .ns-login-card {
+    padding: 30px 22px;
+  }
+
+  .ns-login-card-header h2 {
+    font-size: 26px;
+  }
+}
+/* Registration link */
+.ns-login-register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  color: #7f8ba3;
+  font-size: 13px;
+}
+
+.ns-login-register a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #60a5fa;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.ns-login-register a:hover {
+  color: #93c5fd;
+  transform: translateX(2px);
+}

@@ -1,0 +1,525 @@
+/* =========================================================
+   NETSENTINEL AI
+   GLOBAL LIGHT / DARK THEME
+   ========================================================= */
+
+/* =========================================================
+   DARK THEME
+   Existing NetSentinel SOC appearance
+   ========================================================= */
+
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-main: #080b10;
+  --bg-sidebar: #0b0f15;
+  --bg-panel: #10151d;
+  --bg-panel-hover: #141a23;
+  --bg-input: #0c1118;
+
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.12);
+
+  --text-primary: #edf3fa;
+  --text-secondary: #98a5b5;
+  --text-muted: #657180;
+
+  --accent: #3b82f6;
+  --accent-soft: rgba(59, 130, 246, 0.12);
+  --accent-hover: #60a5fa;
+
+  --shadow-panel:
+    0 10px 30px rgba(0, 0, 0, 0.22),
+    0 1px 2px rgba(0, 0, 0, 0.3);
+
+  --theme-control-bg: rgba(255, 255, 255, 0.035);
+  --theme-control-hover: rgba(255, 255, 255, 0.07);
+}
+
+
+/* =========================================================
+   LIGHT THEME
+   Professional SOC light appearance
+   ========================================================= */
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-main: #f4f7fa;
+  --bg-sidebar: #ffffff;
+  --bg-panel: #ffffff;
+  --bg-panel-hover: #f8fafc;
+  --bg-input: #f8fafc;
+
+  --border: rgba(15, 23, 42, 0.10);
+  --border-strong: rgba(15, 23, 42, 0.16);
+
+  --text-primary: #17202a;
+  --text-secondary: #526174;
+  --text-muted: #7b8796;
+
+  --accent: #2563eb;
+  --accent-soft: rgba(37, 99, 235, 0.09);
+  --accent-hover: #1d4ed8;
+
+  --shadow-panel:
+    0 8px 25px rgba(15, 23, 42, 0.07),
+    0 1px 2px rgba(15, 23, 42, 0.05);
+
+  --theme-control-bg: rgba(15, 23, 42, 0.035);
+  --theme-control-hover: rgba(15, 23, 42, 0.07);
+}
+
+
+/* =========================================================
+   GLOBAL THEME TRANSITION
+   ========================================================= */
+
+html,
+body,
+#root,
+.app-shell,
+.app-main,
+.page-content,
+.top-navbar,
+.sidebar,
+.panel,
+.dashboard-stat-card,
+.alert-page-card,
+.alert-summary-card,
+.monitor-control-panel {
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+body {
+  background:
+    radial-gradient(
+      circle at 80% -10%,
+      rgba(59, 130, 246, 0.06),
+      transparent 30%
+    ),
+    var(--bg-main);
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+[data-theme="dark"] .top-navbar {
+  background: rgba(8, 11, 16, 0.88);
+}
+
+[data-theme="light"] .top-navbar {
+  background: rgba(255, 255, 255, 0.90);
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+[data-theme="light"] .sidebar {
+  box-shadow: 2px 0 18px rgba(15, 23, 42, 0.035);
+}
+
+[data-theme="light"] .nav-item:hover {
+  background: rgba(37, 99, 235, 0.055);
+}
+
+[data-theme="light"] .nav-item.active {
+  color: #1d4ed8;
+}
+
+
+/* =========================================================
+   PANELS
+   ========================================================= */
+
+[data-theme="dark"] .panel {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0.012)
+    );
+}
+
+[data-theme="light"] .panel {
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+[data-theme="light"] .btn-secondary {
+  background: #f8fafc;
+}
+
+[data-theme="light"] .btn-secondary:hover {
+  background: #eef2f7;
+}
+
+
+/* =========================================================
+   THEME TOGGLE
+   ========================================================= */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  height: 36px;
+  padding: 0 10px;
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  background: var(--theme-control-bg);
+  color: var(--text-secondary);
+
+  cursor: pointer;
+
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.theme-toggle:hover {
+  background: var(--theme-control-hover);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.theme-toggle:active {
+  transform: translateY(1px);
+}
+
+.theme-toggle-icon {
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+}
+
+.theme-toggle-label {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   NAVBAR CONTROLS
+   ========================================================= */
+
+.navbar-protected-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: var(--success);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.navbar-icon-button {
+  display: grid;
+  place-items: center;
+
+  width: 36px;
+  height: 36px;
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  background: var(--theme-control-bg);
+  color: var(--text-secondary);
+
+  cursor: pointer;
+
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.navbar-icon-button:hover {
+  background: var(--theme-control-hover);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.navbar-user-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 7px 8px;
+
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  background: transparent;
+  color: var(--text-secondary);
+
+  cursor: pointer;
+
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.navbar-user-button:hover {
+  background: var(--theme-control-bg);
+  border-color: var(--border);
+}
+
+.navbar-user-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+
+/* =========================================================
+   USER MENU
+   ========================================================= */
+
+.navbar-user-menu {
+  position: absolute;
+
+  top: calc(100% + 8px);
+  right: 0;
+
+  width: 190px;
+
+  padding: 6px;
+
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+
+  background: var(--bg-panel);
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.18);
+
+  z-index: 1000;
+}
+
+[data-theme="light"] .navbar-user-menu {
+  box-shadow:
+    0 18px 45px rgba(15, 23, 42, 0.14);
+}
+
+.navbar-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+
+  padding: 10px;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+  color: var(--text-secondary);
+
+  text-decoration: none;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    color 150ms ease;
+}
+
+.navbar-menu-item:hover {
+  background: var(--theme-control-hover);
+  color: var(--text-primary);
+}
+
+.navbar-logout-item {
+  margin-top: 2px;
+  color: #ef4444;
+}
+
+.navbar-logout-item:hover {
+  color: #dc2626;
+  background: rgba(239, 68, 68, 0.07);
+}
+
+
+/* =========================================================
+   FORM CONTROLS
+   ========================================================= */
+
+[data-theme="light"] input,
+[data-theme="light"] select,
+[data-theme="light"] textarea {
+  color-scheme: light;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #9aa6b2;
+}
+
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+[data-theme="light"] table {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] th {
+  background: #f8fafc;
+}
+
+[data-theme="light"] tr:hover {
+  background: rgba(37, 99, 235, 0.025);
+}
+
+
+/* =========================================================
+   LOGIN — LIGHT MODE
+   Keep the existing cybersecurity layout while adapting it
+   ========================================================= */
+
+[data-theme="light"] .login-page {
+  background:
+    radial-gradient(
+      circle at 15% 50%,
+      rgba(37, 99, 235, 0.07),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(14, 165, 233, 0.045),
+      transparent 30%
+    ),
+    #f4f7fa;
+  color: #17202a;
+}
+
+[data-theme="light"] .login-background-grid {
+  opacity: 0.35;
+  background-image:
+    linear-gradient(
+      rgba(15, 23, 42, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 0.035) 1px,
+      transparent 1px
+    );
+}
+
+[data-theme="light"] .login-logo strong,
+[data-theme="light"] .login-intro h1,
+[data-theme="light"] .login-heading h2 {
+  color: #17202a;
+}
+
+[data-theme="light"] .login-logo span,
+[data-theme="light"] .login-intro-content > p,
+[data-theme="light"] .login-heading p {
+  color: #68778a;
+}
+
+[data-theme="light"] .login-capabilities > div {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .login-capabilities strong {
+  color: #273444;
+}
+
+[data-theme="light"] .login-form-wrapper {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(248, 250, 252, 0.98)
+    );
+  border-color: rgba(15, 23, 42, 0.10);
+  box-shadow:
+    0 28px 70px rgba(15, 23, 42, 0.10);
+}
+
+[data-theme="light"] .login-input {
+  background: #f8fafc;
+  border-color: rgba(15, 23, 42, 0.10);
+  color: #526174;
+}
+
+[data-theme="light"] .login-input:focus-within {
+  background: #ffffff;
+}
+
+[data-theme="light"] .login-input input {
+  color: #17202a;
+}
+
+[data-theme="light"] .login-input input::placeholder {
+  color: #9aa6b2;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.14);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.22);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .theme-toggle-label {
+    display: none;
+  }
+
+  .theme-toggle {
+    width: 36px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .navbar-protected-status {
+    display: none;
+  }
+}

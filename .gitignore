@@ -1,0 +1,37 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# ML artifacts
+*.joblib
+
+# Database/logs
+*.db
+backend/logs/*.log
+backend/reports/*
+
+# Temporary / backup files
+*.backup
+*.before-cloud
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# VS Code
+.vscode/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Local test files
+backend/database/permission_test.txt
+backend/tests/safe_test.pcap
